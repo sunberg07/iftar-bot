@@ -22,6 +22,7 @@ options.add_argument("--disable-dev-shm-usage")
 driver = webdriver.Chrome(options=options)
 
 driver.get(URL)
+send_telegram("Test mesajı 🚀 Bot çalışıyor")
 time.sleep(8)
 
 buttons = driver.find_elements(By.TAG_NAME, "button")
