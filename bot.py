@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 import time
 import requests
+import os   # 👈 BUNU EKLEDİK
 
 TOKEN = os.environ["TELEGRAM_TOKEN"]
 CHAT_ID = os.environ["TELEGRAM_CHAT_ID"]
@@ -36,4 +37,4 @@ for b in buttons:
 if not bos_var:
     print("Hala dolu")
 
-driver.quit()
+driver.qu
