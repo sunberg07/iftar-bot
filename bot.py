@@ -4,8 +4,8 @@ from selenium.webdriver.chrome.options import Options
 import time
 import requests
 
-TOKEN = "BURAYA_TELEGRAM_TOKEN"
-CHAT_ID = "BURAYA_CHAT_ID"
+TOKEN = "8419322136:AAFuiSfBH_JyvhBrCVdUwxDtMDi7qWMXv8k"
+CHAT_ID = "5639855102"
 
 URL = "https://tesislerrezervasyon.ibb.istanbul/reservation/create/1"
 
