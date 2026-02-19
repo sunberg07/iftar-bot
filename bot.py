@@ -19,31 +19,32 @@ def send_telegram(message):
     requests.post(url, data={"chat_id": CHAT_ID, "text": message})
 
 options = Options()
-options.add_argument("--headless")
+options.add_argument("--headless=new")
 options.add_argument("--no-sandbox")
 options.add_argument("--disable-dev-shm-usage")
 options.add_argument("--disable-gpu")
 
 driver = webdriver.Chrome(options=options)
 
-bos_restoranlar = []
+bos_bilgiler = []
 
 for name, url in URLS.items():
     print(f"{name} kontrol ediliyor...")
     driver.get(url)
     time.sleep(15)
 
-    buttons = driver.find_elements(By.TAG_NAME, "button")
+    elements = driver.find_elements(By.XPATH, "//*[contains(text(),'Şubat')]")
 
-    for b in buttons:
-        if "Şubat" in b.text and "Dolu" not in b.text:
-            bos_restoranlar.append(name)
-            break
+    for el in elements:
+        text = el.text.strip()
 
-if bos_restoranlar:
-    mesaj = "🚨 BOŞ REZERVASYON VAR!\n\n"
-    for r in bos_restoranlar:
-        mesaj += f"✅ {r}\n"
+        if text and "Dolu" not in text:
+            bos_bilgiler.append(f"{name} → {text}")
+
+if bos_bilgiler:
+    mesaj = "🚨 BOŞ REZERVASYON BULUNDU!\n\n"
+    for bilgi in bos_bilgiler:
+        mesaj += f"✅ {bilgi}\n\n"
     send_telegram(mesaj)
 else:
     print("Tüm restoranlar dolu.")
