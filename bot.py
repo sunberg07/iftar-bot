@@ -31,7 +31,7 @@ bos_restoranlar = []
 for name, url in URLS.items():
     print(f"{name} kontrol ediliyor...")
     driver.get(url)
-    time.sleep(8)
+    time.sleep(15)
 
     buttons = driver.find_elements(By.TAG_NAME, "button")
 
