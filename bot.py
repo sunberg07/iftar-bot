@@ -38,4 +38,4 @@ for b in buttons:
 if not bos_var:
     print("Hala dolu")
 
-driver.qu
+driver.quit()
